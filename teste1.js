@@ -13,12 +13,9 @@ const getUser = ( req, res, next ) => {
     } catch (error) {
         res.send(error);
     }
-
-
 };
 
 const getUsers = ( req, res, next ) => {
-    
     const users = data;
     try {
         res.status(200).send(users);
