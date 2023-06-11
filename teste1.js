@@ -1,14 +1,20 @@
+const e = require("express");
 var data =  require("./fakeData");
 
 const getUser = ( req, res, next ) => {
-    
-    var name =  req.query.name;
+    const name =  req.query.name;
+    try {
 
-    for(let i = 0; i < data.length;  i++) {
-        if(i.name == name) {
-            res.send(data[i]);
+        const userData = data.find(user => user.name === name);
+        if (!userData) {
+            res.status(404).send("User not found");
+        }else{
+            res.status(200).send(userData);
         }
+    } catch (error) {
+        res.send(error);
     }
+
 
 };
 
