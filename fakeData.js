@@ -1,9 +1,11 @@
+const { counterRead } = require("./teste1");
 
 const fakeData  =  [
     {
         id: 1,
         name: "João Oliveira",
-        job: "Desenvolvedor"
+        job: "Desenvolvedor",
+        counterRead: 0,
     }
 ]
 

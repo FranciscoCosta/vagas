@@ -1,6 +1,7 @@
 const e = require("express");
 var data =  require("./fakeData");
 
+
 const getUser = ( req, res, next ) => {
     const name =  req.query.name;
     try {
@@ -10,6 +11,10 @@ const getUser = ( req, res, next ) => {
             //Aqui eu retorno o status 404 em caso de falha
             res.status(404).send("User not found");
         }else{
+            //Aqui eu atualizo o contador de leitura do usuário´
+            userData.counterRead = userData.counterRead + 1;
+            data.splice(userData.id - 1, 1, userData);
+
             //Aqui eu retorno o novo usuário em caso de sucesso
             res.status(200).send(userData);
         }
@@ -32,5 +37,5 @@ const getUsers = ( req, res, next ) => {
 
 module.exports = {
     getUser,
-    getUsers
+    getUsers,
 };
